@@ -44,7 +44,7 @@ test-api:  ## Run generated API integration tests
 ifdef race
 	$(eval testapiargs += "-race")
 endif
-	$(eval testapiargs += "-cover" "-coverpkg=github.com/elastic/go-elasticsearch/v8/esapi" "-coverprofile=$(PWD)/tmp/integration-api.cov" "-tags='integration'" "-timeout=1h")
+	$(eval testapiargs += "-cover" "-coverpkg=github.com/Tritura/go-elasticsearch/v8/esapi" "-coverprofile=$(PWD)/tmp/integration-api.cov" "-tags='integration'" "-timeout=1h")
 ifdef flavor
 else
 	$(eval flavor='free')
@@ -146,8 +146,8 @@ test-coverage:  ## Generate test coverage report
 ##@ Development
 lint:  ## Run lint on the package
 	@printf "\033[2m→ Running lint...\033[0m\n"
-	go vet github.com/elastic/go-elasticsearch/...
-	go list github.com/elastic/go-elasticsearch/... | 'grep' -v internal | xargs golint -set_exit_status
+	go vet github.com/Tritura/go-elasticsearch/...
+	go list github.com/Tritura/go-elasticsearch/... | 'grep' -v internal | xargs golint -set_exit_status
 	@{ \
 		set -e ; \
 		trap "test -d ../../../.git && git checkout --quiet go.mod" INT TERM EXIT; \
@@ -259,10 +259,10 @@ endif
 
 godoc: ## Display documentation for the package
 	@printf "\033[2m→ Generating documentation...\033[0m\n"
-	@echo "* http://localhost:6060/pkg/github.com/elastic/go-elasticsearch/v8"
-	@echo "* http://localhost:6060/pkg/github.com/elastic/go-elasticsearch/v8/esapi"
-	@echo "* http://localhost:6060/pkg/github.com/elastic/go-elasticsearch/v8/estransport"
-	@echo "* http://localhost:6060/pkg/github.com/elastic/go-elasticsearch/v8/esutil"
+	@echo "* http://localhost:6060/pkg/github.com/Tritura/go-elasticsearch/v8"
+	@echo "* http://localhost:6060/pkg/github.com/Tritura/go-elasticsearch/v8/esapi"
+	@echo "* http://localhost:6060/pkg/github.com/Tritura/go-elasticsearch/v8/estransport"
+	@echo "* http://localhost:6060/pkg/github.com/Tritura/go-elasticsearch/v8/esutil"
 	@printf "\n"
 	godoc --http=localhost:6060 --play
 
@@ -365,8 +365,8 @@ cluster-clean: ## Remove unused Docker volumes and networks
 	docker network prune --force
 
 docker: ## Build the Docker image and run it
-	docker build --file .ci/Dockerfile --tag elastic/go-elasticsearch .
-	docker run -it --network elasticsearch --volume $(PWD)/tmp:/tmp:rw,delegated --rm elastic/go-elasticsearch
+	docker build --file .ci/Dockerfile --tag Tritura/go-elasticsearch .
+	docker run -it --network elasticsearch --volume $(PWD)/tmp:/tmp:rw,delegated --rm Tritura/go-elasticsearch
 
 ##@ Generator
 gen-api:  ## Generate the API package from the JSON specification

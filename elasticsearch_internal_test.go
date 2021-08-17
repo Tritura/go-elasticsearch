@@ -32,7 +32,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/elastic/go-elasticsearch/v8/estransport"
+	"github.com/Tritura/go-elasticsearch/v8/estransport"
 )
 
 var called bool

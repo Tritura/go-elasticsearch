@@ -28,11 +28,11 @@ fi
 
 echo -e "\033[32;1mSUCCESS:\033[0m successfully started the ${STACK_VERSION} stack.\033[0m"
 
-echo -e "\033[34;1mINFO:\033[0m Building the [elastic/go-elasticsearch] image... \033[0m"
+echo -e "\033[34;1mINFO:\033[0m Building the [Tritura/go-elasticsearch] image... \033[0m"
 
 docker build \
     --file .ci/Dockerfile \
-    --tag elastic/go-elasticsearch \
+    --tag Tritura/go-elasticsearch \
     .
 
 echo -e "\033[34;1mINFO:\033[0m Retrieving Elasticsearch Version & Hash from container... \033[0m"
@@ -41,7 +41,7 @@ ELASTICSEARCH_BUILD_VERSION=$(curl -sSk $external_elasticsearch_url | jq -r '.ve
 ELASTICSEARCH_BUILD_HASH=$(curl -sSk $external_elasticsearch_url | jq -r '.version.build_hash')
 
 echo -e "\033[34;1mINFO:\033[0m Download Elasticsearch specs... \033[0m"
-docker run --volume=$WORKSPACE/tmp:/tmp --workdir=/go-elasticsearch/internal/build --rm elastic/go-elasticsearch /bin/sh -c "
+docker run --volume=$WORKSPACE/tmp:/tmp --workdir=/go-elasticsearch/internal/build --rm Tritura/go-elasticsearch /bin/sh -c "
   go mod download
   go run main.go download-spec -o /tmp -d
 "
@@ -58,5 +58,5 @@ docker run -t \
   --env "ELASTICSEARCH_BUILD_HASH=$ELASTICSEARCH_BUILD_HASH" \
   --env "WORKSPACE=${WORKSPACE:-/workspace}" \
   --volume "${WORKSPACE:-workspace}:${WORKSPACE:-/workspace}" \
-  elastic/go-elasticsearch \
+  Tritura/go-elasticsearch \
   .ci/scripts/tests-$TEST_SUITE.sh

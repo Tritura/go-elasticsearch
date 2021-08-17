@@ -27,8 +27,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/elastic/go-elasticsearch/v8"
-	"github.com/elastic/go-elasticsearch/v8/esapi"
+	"github.com/Tritura/go-elasticsearch/v8"
+	"github.com/Tritura/go-elasticsearch/v8/esapi"
 )
 
 func TestAPI(t *testing.T) {

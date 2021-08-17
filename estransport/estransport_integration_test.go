@@ -30,8 +30,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/elastic/go-elasticsearch/v8/estransport"
-	"github.com/elastic/go-elasticsearch/v8/esutil"
+	"github.com/Tritura/go-elasticsearch/v8/estransport"
+	"github.com/Tritura/go-elasticsearch/v8/esutil"
 )
 
 var (

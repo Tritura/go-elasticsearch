@@ -1,6 +1,6 @@
-# $ docker build --file Dockerfile --tag elastic/go-elasticsearch .
+# $ docker build --file Dockerfile --tag Tritura/go-elasticsearch .
 #
-# $ docker run -it --env ELASTICSEARCH_URL=http://es1:9200 --network elasticsearch --rm elastic/go-elasticsearch go run _examples/main.go
+# $ docker run -it --env ELASTICSEARCH_URL=http://es1:9200 --network elasticsearch --rm Tritura/go-elasticsearch go run _examples/main.go
 #
 
 ARG  VERSION=1-alpine
